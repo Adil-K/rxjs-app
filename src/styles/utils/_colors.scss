@@ -1,0 +1,50 @@
+$kpd-darkblue: #064890;
+
+$label-1: #000;
+$label-2: rgba(60, 60, 67, 0.6);
+$label-3: rgba(130, 130, 130, 0.29);
+
+$system-red: #ff3b30;
+$system-orange: #ff9500;
+$system-green: #34c759;
+$system-blue: #007aff;
+
+$white: #fff;
+$transparent: transparent;
+
+$colors: (
+  'kpd-darkblue': $kpd-darkblue,
+  'label-1': $label-1,
+  'label-2': $label-2,
+  'label-3': $label-3,
+  'system-red': $system-red,
+  'system-orange': $system-orange,
+  'system-green': $system-green,
+  'system-blue': $system-blue,
+  'white': $white,
+  'transparent': $transparent,
+);
+
+$color-names: 'kpd-darkblue', 'label-1', 'label-2', 'label-3', 'system-red', 'system-orange', 'system-green',
+  'system-blue', 'white', 'transparent';
+
+@function color($key) {
+  @return map-get($colors, $key);
+}
+
+@each $color in $color-names {
+  .c-#{$color} {
+    $color-val: color($color);
+    color: $color-val;
+  }
+
+  .bgc-#{$color} {
+    $color-val: color($color);
+    background-color: $color-val;
+  }
+
+  .bgc-#{$color}-light {
+    $color-val: color($color);
+    background-color: lighten($color-val, 40%);
+  }
+}

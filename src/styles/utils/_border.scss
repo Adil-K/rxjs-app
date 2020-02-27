@@ -1,0 +1,23 @@
+$borders: 'top', 'bottom', 'left', 'right';
+
+@each $border in $borders {
+  .b-#{$border} {
+    border-#{$border}: 1px solid $label-3;
+  }
+}
+
+.border {
+  border: 1px solid $label-3;
+}
+
+.border-radius {
+  border-radius: 3px;
+}
+
+.full-br {
+  border-radius: 1000px;
+}
+
+.border-none {
+  border: 0 !important;
+}

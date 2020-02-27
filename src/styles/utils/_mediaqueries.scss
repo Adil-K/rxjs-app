@@ -1,0 +1,30 @@
+$breakpoints: (
+  xs: 350px,
+  sm: 500px,
+  md: 750px,
+  lg: 1000px,
+);
+
+@mixin mq-xs {
+  @media screen and (min-width: #{map-get($breakpoints, 'xs')}) {
+    @content;
+  }
+}
+
+@mixin mq-sm {
+  @media screen and (min-width: #{map-get($breakpoints, 'sm')}) {
+    @content;
+  }
+}
+
+@mixin mq-md {
+  @media screen and (min-width: #{map-get($breakpoints, 'md')}) {
+    @content;
+  }
+}
+
+@mixin mq-lg {
+  @media screen and (min-width: #{map-get($breakpoints, 'lg')}) {
+    @content;
+  }
+}

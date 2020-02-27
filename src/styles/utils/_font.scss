@@ -1,0 +1,45 @@
+$font-sizes: (
+  'small': 12,
+  'medium': 17,
+  'large': 22,
+  'xlarge': 28,
+  'xxlarge': 34,
+);
+
+$font-sizes-names: 'small', 'medium', 'large', 'xlarge', 'xxlarge';
+
+@function font-size($key) {
+  @return map-get($font-sizes, $key);
+}
+
+@each $size in $font-sizes-names {
+  .f-#{$size} {
+    $font-size: font-size($size);
+    font-size: #{$font-size - 2}px;
+  }
+
+  @include mq-sm {
+    .f-#{$size} {
+      $font-size: font-size($size);
+      font-size: #{$font-size}px;
+    }
+  }
+}
+
+.semi-bold {
+  font-weight: 600 !important;
+}
+
+.bold {
+  font-weight: 900 !important;
+}
+
+.t-center {
+  text-align: center;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

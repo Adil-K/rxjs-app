@@ -1,0 +1,30 @@
+$widths-percent: 100, 80, 70, 66, 50, 33, 30, 25, 20, 10;
+$widths: 1200, 1000, 800, 600, 500, 400, 300, 200, 100;
+
+@each $width in $widths {
+  .w-#{$width} {
+    width: #{$width}px;
+  }
+
+  .maxw-#{$width} {
+    max-width: #{$width}px;
+  }
+
+  .minw-#{$width} {
+    min-width: #{$width}px;
+  }
+}
+
+@each $width in $widths-percent {
+  .w-#{$width}pct {
+    width: #{$width}#{'%'};
+  }
+
+  .maxw-#{$width}pct {
+    max-width: #{$width}#{'%'};
+  }
+
+  .minw-#{$width}pct {
+    min-width: #{$width}#{'%'};
+  }
+}
