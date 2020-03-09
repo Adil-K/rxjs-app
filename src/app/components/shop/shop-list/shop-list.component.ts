@@ -1,3 +1,4 @@
+import { ShopItemsPage } from './../../../models/shop-items-page.model';
 import { ShopItemService } from './../../../services/shop-item.service';
 import { Component, OnInit } from '@angular/core';
 import { ShopItem } from 'src/app/models/shop-item.model';
@@ -8,20 +9,17 @@ import { ShopItem } from 'src/app/models/shop-item.model';
   styleUrls: ['./shop-list.component.scss'],
 })
 export class ShopListComponent implements OnInit {
-  items: ShopItem[] = [];
+  shopItemPage: ShopItemsPage;
+  shopItems: ShopItem[] = [];
   constructor(private shopItemService: ShopItemService) {}
 
   ngOnInit(): void {
-    this.shopItemService.getItems().subscribe(result => {
-      result.forEach(item => {
-        this.shopItemService.getItem(item.url).subscribe(shopItem => this.items.push(shopItem));
-      });
+    this.shopItemService.getItems().subscribe(result => (this.shopItemPage = result));
+
+    console.log(this.shopItemPage);
+
+    this.shopItemPage.results.forEach(item => {
+      this.shopItemService.getItem(item.url).subscribe(shopItem => this.shopItems.push(shopItem));
     });
-
-    console.log(this.items);
-
-    // this.items.forEach(item => {
-    //   this.shopItemService.getItem(item.url);
-    // });
   }
 }

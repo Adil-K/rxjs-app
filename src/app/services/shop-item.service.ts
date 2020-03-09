@@ -1,6 +1,7 @@
-import { ShopItem, IShopItemDTO } from './../models/shop-item.model';
+import { ShopItemsPage, IShopItemsPageDTO } from './../models/shop-items-page.model';
+import { ShopItem } from './../models/shop-item.model';
 import { Injectable } from '@angular/core';
-import { Observable, from } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
@@ -10,13 +11,10 @@ import { HttpClient } from '@angular/common/http';
 export class ShopItemService {
   constructor(private httpClient: HttpClient) {}
 
-  getItems(): Observable<any[]> {
-    return this.httpClient.get<any>(`https://pokeapi.co/api/v2/item`).pipe(
-      map(shopItems => {
-        console.log(shopItems);
-        return shopItems.results.map(item => {
-          return item;
-        });
+  getItems(): Observable<ShopItemsPage> {
+    return this.httpClient.get<IShopItemsPageDTO>(`https://pokeapi.co/api/v2/item`).pipe(
+      map(result => {
+        return new ShopItemsPage(result);
       }),
     );
   }
