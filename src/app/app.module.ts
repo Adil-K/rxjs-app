@@ -10,6 +10,8 @@ import { ShopItemComponent } from './components/shop/shop-item/shop-item.compone
 import { ShopListComponent } from './components/shop/shop-list/shop-list.component';
 import { CartListComponent } from './components/cart/cart-list/cart-list.component';
 import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
+import { ShopItemService } from './services/shop-item.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,8 +24,8 @@ import { CartItemComponent } from './components/cart/cart-item/cart-item.compone
     CartListComponent,
     CartItemComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  providers: [ShopItemService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
