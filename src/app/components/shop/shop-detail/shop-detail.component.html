@@ -1,4 +1,7 @@
 <div class="detail">
+  <button type="button" (click)="handleBack()" class="nes-btn">
+    < Back
+  </button>
   <div class="detail__image">
     <img *ngIf="item" [src]="item.sprites.default" class="shop-item__image" />
   </div>

@@ -1,5 +1,4 @@
 .wrapper {
-  padding: 20px;
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-areas:
@@ -8,12 +7,20 @@
     'message';
   height: 100vh;
   &__header {
+    padding: 20px;
+    padding-bottom: 16px;
     grid-area: header;
+    border-bottom: 4px solid #ccc;
   }
   &__content {
     grid-area: content;
+    overflow: auto;
+    padding: 20px;
   }
   &__message {
+    padding: 20px;
+    padding-top: 16px;
     grid-area: message;
+    border-top: 4px solid #ccc;
   }
 }

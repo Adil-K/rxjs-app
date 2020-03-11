@@ -1,7 +1,7 @@
 import { ShopItemService } from './../../../services/shop-item.service';
 import { Component, OnInit } from '@angular/core';
 import { ShopItem } from 'src/app/models/shop-item.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartItem } from 'src/app/models/cart-item.model';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -14,10 +14,12 @@ export class ShopDetailComponent implements OnInit {
   item = new ShopItem();
   id: string;
   cartItem = new CartItem();
+
   constructor(
     private shopItemService: ShopItemService,
     private cartService: CartService,
     private route: ActivatedRoute,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -45,5 +47,9 @@ export class ShopDetailComponent implements OnInit {
     if (this.item.cost) {
       this.cartService.addItem(this.cartItem);
     }
+  }
+
+  handleBack(): void {
+    this.router.navigate(['shop']);
   }
 }

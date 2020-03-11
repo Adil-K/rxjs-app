@@ -1,7 +1,5 @@
 :host {
   .detail {
-    margin: 20px;
-
     &__image {
       img {
         margin: 0 calc(50% - 100px);
@@ -16,7 +14,7 @@
     }
 
     &__amount {
-      width: 150px;
+      max-width: 150px;
       margin-left: auto;
       text-align: left;
     }
