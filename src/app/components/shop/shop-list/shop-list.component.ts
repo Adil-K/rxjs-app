@@ -14,7 +14,7 @@ export class ShopListComponent implements OnInit {
   shopItemsPage: ShopItemsPage;
   shopItems: ShopItem[] = [];
   // selectedItem: ShopItem;
-  constructor(private shopItemService: ShopItemService, private cartService: CartService, private router: Router) {}
+  constructor(private shopItemService: ShopItemService, private router: Router) {}
 
   ngOnInit(): void {
     this.getItemsPage();
@@ -45,7 +45,7 @@ export class ShopListComponent implements OnInit {
     this.shopItemService.getNextPage(this.shopItemsPage.next).subscribe({
       next: page => {
         this.shopItemsPage = page;
-        this.populateItemlist(page);
+        this.populateItemlist(page.results);
       },
     });
   }
