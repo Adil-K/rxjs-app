@@ -1,4 +1,9 @@
-<p>shop-list works!</p>
 <div class="shop-list__grid">
-  <app-shop-item *ngFor="let item of items" [shopItem]="item"></app-shop-item>
+  <app-shop-item *ngFor="let item of shopItems" [shopItem]="item"></app-shop-item>
+
+  <button *ngIf="shopItemsPage?.next" class="nes-container is-rounded" (click)="nextPage()">
+    <p class="shop-item__title">
+      Next >
+    </p>
+  </button>
 </div>

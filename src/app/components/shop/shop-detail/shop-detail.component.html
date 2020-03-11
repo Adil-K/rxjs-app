@@ -1,0 +1,30 @@
+<div class="detail">
+  <div class="detail__image">
+    <img *ngIf="item" [src]="item.sprites.default" class="shop-item__image" />
+  </div>
+  <div class="nes-container is-rounded">
+    <p class="shop-item__title">
+      {{ item.names[2].name }}
+    </p>
+    <p [ngClass]="item.cost ? 'nes-text' : 'nes-text is-disabled'" class="shop-item__title">
+      {{ item.cost ? '₽' + item.cost : 'unavailable' }}
+    </p>
+    <p class="shop-item__title">
+      {{ item.flavor_text_entries[2].text }}
+    </p>
+  </div>
+
+  <form class="detail__form">
+    <div class="nes-field detail__amount">
+      <input *ngIf="item.cost" type="number" id="name_field" class="nes-input" value="1" />
+    </div>
+    <button
+      type="button"
+      (click)="handleAdd()"
+      class="nes-btn detail__add"
+      [ngClass]="item.cost ? 'is-warning' : 'is-disabled'"
+    >
+      Add to Cart
+    </button>
+  </form>
+</div>

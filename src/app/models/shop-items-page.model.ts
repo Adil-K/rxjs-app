@@ -1,7 +1,7 @@
 export class ShopItemsPage {
   count: number;
-  next?: string;
-  previous?: string;
+  next: string;
+  previous: string;
   results: [
     {
       name: string;
@@ -18,7 +18,7 @@ export interface IShopItemsPageDTO {
   count: number;
   next?: string;
   previous?: string;
-  results: [
+  results?: [
     {
       name: string;
       url: string;

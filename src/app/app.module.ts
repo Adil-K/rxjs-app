@@ -12,6 +12,8 @@ import { CartListComponent } from './components/cart/cart-list/cart-list.compone
 import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
 import { ShopItemService } from './services/shop-item.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ShopComponent } from './components/shop/shop.component';
+import { ShopDetailComponent } from './components/shop/shop-detail/shop-detail.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     ShopListComponent,
     CartListComponent,
     CartItemComponent,
+    ShopComponent,
+    ShopDetailComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [ShopItemService],

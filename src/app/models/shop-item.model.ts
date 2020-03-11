@@ -1,14 +1,11 @@
 export class ShopItem {
-  id?: number;
+  id: number;
   name: string;
-  stock?: number;
-  price?: number;
-  category?: string;
-  sprite?: string;
-  names: {
+  cost: number;
+  names?: {
     name: string;
   };
-  sprites: {
+  sprites?: {
     default: string;
   };
 
@@ -18,9 +15,7 @@ export class ShopItem {
 }
 
 export interface IShopItemDTO {
+  id: number;
   name: string;
-  stock?: number;
-  price?: number;
-  category?: string;
-  sprite?: string;
+  cost: number;
 }

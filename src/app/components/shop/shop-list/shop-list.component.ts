@@ -1,7 +1,9 @@
 import { ShopItemsPage } from './../../../models/shop-items-page.model';
 import { ShopItemService } from './../../../services/shop-item.service';
+import { CartService } from 'src/app/services/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { ShopItem } from 'src/app/models/shop-item.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shop-list',
@@ -9,17 +11,48 @@ import { ShopItem } from 'src/app/models/shop-item.model';
   styleUrls: ['./shop-list.component.scss'],
 })
 export class ShopListComponent implements OnInit {
-  shopItemPage: ShopItemsPage;
+  shopItemsPage: ShopItemsPage;
   shopItems: ShopItem[] = [];
-  constructor(private shopItemService: ShopItemService) {}
+  // selectedItem: ShopItem;
+  constructor(private shopItemService: ShopItemService, private cartService: CartService, private router: Router) {}
 
   ngOnInit(): void {
-    this.shopItemService.getItems().subscribe(result => (this.shopItemPage = result));
+    this.getItemsPage();
+    this.shopItemService.itemSelected.subscribe({
+      next: selected => {
+        // this.selectedItem = selected;
+        this.router.navigate(['shop/detail', selected.id]);
+      },
+    });
+  }
 
-    console.log(this.shopItemPage);
+  getItemsPage(): void {
+    this.shopItemService.getItems().subscribe({
+      next: page => {
+        this.shopItemsPage = page;
+        this.populateItemlist(page.results);
+      },
+    });
+  }
 
-    this.shopItemPage.results.forEach(item => {
-      this.shopItemService.getItem(item.url).subscribe(shopItem => this.shopItems.push(shopItem));
+  getItem(item): void {
+    this.shopItemService.getItem(item.url).subscribe({
+      next: shopItem => this.shopItems.push(shopItem),
+    });
+  }
+
+  nextPage(): void {
+    this.shopItemService.getNextPage(this.shopItemsPage.next).subscribe({
+      next: page => {
+        this.shopItemsPage = page;
+        this.populateItemlist(page);
+      },
+    });
+  }
+
+  populateItemlist(list): void {
+    list.forEach(item => {
+      this.getItem(item);
     });
   }
 }

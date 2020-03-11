@@ -1,3 +1,4 @@
+import { ShopItemService } from './../../../services/shop-item.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { ShopItem } from 'src/app/models/shop-item.model';
 
@@ -10,7 +11,11 @@ export class ShopItemComponent implements OnInit {
   @Input()
   shopItem = new ShopItem();
 
-  constructor() {}
+  constructor(private shopItemService: ShopItemService) {}
 
   ngOnInit(): void {}
+
+  handleClick(): void {
+    this.shopItemService.itemSelected.emit(this.shopItem);
+  }
 }

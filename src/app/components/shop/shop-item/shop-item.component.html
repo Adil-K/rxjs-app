@@ -1,6 +1,9 @@
-<div class="nes-container is-rounded">
+<div class="nes-container is-rounded" (click)="handleClick()">
   <img [src]="shopItem.sprites.default" class="shop-item__image" />
   <p class="shop-item__title">
     {{ shopItem.names[2].name }}
+  </p>
+  <p [ngClass]="shopItem.cost ? 'nes-text' : 'nes-text is-disabled'" class="shop-item__title">
+    {{ shopItem.cost ? '₽' + shopItem.cost : 'unavailable' }}
   </p>
 </div>
