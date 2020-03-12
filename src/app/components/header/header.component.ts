@@ -12,9 +12,15 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.setButtonLabel();
+  }
 
   handleCartClick(): void {
+    this.setButtonLabel();
+  }
+
+  setButtonLabel(): void {
     if (this.router.url !== '/cart') {
       this.buttonLabel = 'Shop';
       this.router.navigate(['cart']);

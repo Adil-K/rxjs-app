@@ -24,6 +24,9 @@ export class CartComponent implements OnInit {
     this.cartItems.forEach(item => {
       eachCost.push(item.cost * item.amount);
     });
+    if (this.cartItems.length < 1) {
+      return;
+    }
     this.totalCost = eachCost.reduce((accumulator, currentValue) => accumulator + currentValue);
   }
 }
