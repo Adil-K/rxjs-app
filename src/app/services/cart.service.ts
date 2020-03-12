@@ -6,6 +6,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 })
 export class CartService {
   private cartItems: CartItem[] = [];
+  private index = new CartItem();
 
   constructor() {}
 
@@ -14,9 +15,17 @@ export class CartService {
   }
 
   addItem(item: CartItem) {
-    // this.cartItems = this.cartItems.filter(res => item !== res);
-    console.log(item);
-    this.cartItems.push(item);
+    if (item.id in this.index) {
+      this.index[item.id].amount += 1;
+    } else {
+      this.index[item.id] = item;
+      item.amount = 1;
+      this.cartItems.push(item);
+    }
     console.log(this.cartItems);
+  }
+
+  removeItem(id) {
+    // this.cartItems = this.cartItems.filter(item => item.id !== id);
   }
 }

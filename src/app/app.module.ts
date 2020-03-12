@@ -14,6 +14,7 @@ import { ShopItemService } from './services/shop-item.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ShopComponent } from './components/shop/shop.component';
 import { ShopDetailComponent } from './components/shop/shop-detail/shop-detail.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ShopDetailComponent } from './components/shop/shop-detail/shop-detail.c
     CartItemComponent,
     ShopComponent,
     ShopDetailComponent,
+    CartComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [ShopItemService],

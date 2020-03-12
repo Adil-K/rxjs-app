@@ -1,1 +1,7 @@
-<p>cart-list works!</p>
+<ul>
+  <li *ngFor="let item of cartItems" class="nes-container is-rounded cart__item">
+    <img [src]="item.sprite" />
+    <span>{{ item.name }} x {{ item.amount }}</span
+    ><span> ₽{{ item.cost * item.amount }}</span>
+  </li>
+</ul>

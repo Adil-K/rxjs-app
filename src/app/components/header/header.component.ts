@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  title = 'PokeMart';
+  buttonLabel = 'Cart';
 
-  title: string;
+  constructor(private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit(): void {}
+
+  handleCartClick(): void {
+    if (this.router.url !== '/cart') {
+      this.buttonLabel = 'Shop';
+      this.router.navigate(['cart']);
+    } else {
+      this.buttonLabel = 'Cart';
+      this.router.navigate(['shop']);
+    }
+  }
 }
