@@ -1,8 +1,10 @@
-<div *ngIf="cartItems.length !== 0; else noItems">
+<ng-container *ngIf="cartItems.length !== 0; else noItems">
   <app-cart-list [cartItems]="cartItems"></app-cart-list>
-  <label for="Total">Total</label>
-  <div class="nes-container is-rounded cart__total">₽{{ totalCost }}</div>
-</div>
+  <div class="cart__total">
+    <label for="Total">Total</label>
+    <div class="nes-container is-rounded ">₽{{ totalCost }}</div>
+  </div>
+</ng-container>
 
 <ng-template #noItems
   >Nothing in your cart... <br />
