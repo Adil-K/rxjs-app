@@ -1,3 +1,4 @@
+import { LoaderInterceptor } from './interceptors/loader-interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -11,7 +12,7 @@ import { ShopListComponent } from './components/shop/shop-list/shop-list.compone
 import { CartListComponent } from './components/cart/cart-list/cart-list.component';
 import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
 import { ShopItemService } from './services/shop-item.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ShopComponent } from './components/shop/shop.component';
 import { ShopDetailComponent } from './components/shop/shop-detail/shop-detail.component';
 import { CartComponent } from './components/cart/cart.component';
@@ -31,7 +32,14 @@ import { CartComponent } from './components/cart/cart.component';
     CartComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [ShopItemService],
+  providers: [
+    ShopItemService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
